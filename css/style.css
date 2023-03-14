@@ -1,0 +1,110 @@
+/* Import Google Font */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@900&display=swap");
+
+/* Apply box-sizing to all elements */
+
+* {
+  box-sizing: border-box;
+}
+/* Define root-level CSS variables and set font-family */
+:root {
+  --h: 33;
+  --s: 90%;
+  --l: 90%;
+  font-family: "Noto Sans", sans-serif;
+}
+
+/* Center the content in the body */
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-content: center;
+  /* Set background image for the body */
+  background-image: url(../img/bg.png);
+}
+
+/* Style for glass button */
+.glass-btn {
+  font-size: clamp(1.2rem, 5vw + 1rem, 2.5rem);
+  width: 10em;
+  height: 4em;
+  border-radius: 0.5em;
+  background-image: linear-gradient(#0003, #0000);
+  box-shadow: 0 -0.125em 0.25em #0002,
+    0 0.25em 0.25em hsl(var(--h) var(--s) var(--l) / 0.5),
+    0 0 0 0.1em hsl(var(--h) var(--s) var(--l) / 0.5),
+    0 0.175em 0.3em hsl(var(--h) var(--s) var(--l) / 0.5) inset,
+    0 -0.025em 0.175em hsl(var(--h) var(--s) var(--l) / 0.4) inset,
+    0 -0.25em 1em 0.3em hsl(var(--h) var(--s) var(--l) / 0.3) inset,
+    0 0.6em 0 hsl(var(--h) var(--s) var(--l) / 0.3) inset, 0 2em 1em #0004;
+  backdrop-filter: blur(0.15em);
+  position: relative;
+  display: grid;
+  place-content: center;
+  color: hsl(var(--h) var(--s) var(--l) / 0.7);
+  text-shadow: 0.03em 0.03em #fff5, -0.03em -0.03em #0005;
+  cursor: pointer;
+  transition: 0.4s ease;
+  padding-top: 0.2em;
+}
+
+/* Pseudo-elements for glass button */
+.glass-btn:before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  width: 80%;
+  left: 10%;
+  height: 1.5em;
+  background-image: radial-gradient(
+    100% 100% at center,
+    hsla(var(--h), var(--s), 80%, 0.25),
+    hsla(var(--h), var(--s), 80%, 0) 50%
+  );
+}
+
+.glass-btn:after {
+  content: "";
+  inset: 0;
+  top: 0.5em;
+  position: absolute;
+
+  background-image: linear-gradient(
+    105deg,
+    transparent 20%,
+    hsl(var(--h) var(--s) var(--l) / 0.2) 20%,
+    hsl(var(--h) var(--s) var(--l) / 0.2) 30%,
+    transparent 30%,
+    transparent 32%,
+    hsl(var(--h) var(--s) var(--l) / 0.2) 5%,
+    hsl(var(--h) var(--s) var(--l) / 0.2) 40%,
+    transparent 0%
+  );
+  background-size: 400% 100%;
+  background-position: 100% 0%;
+  transition: 0.3s ease;
+}
+
+/* Set background position for after pseudo-element of active glass button */
+.glass-btn:active:after {
+  background-position: -50% 0%;
+}
+
+/* Set styles for active glass button */
+.glass-btn:active {
+  translate: 0.01em 0.25em;
+  box-shadow: 0 -0.125em 0.25em #0002,
+    0 0.25em 0.25em hsl(var(--h) var(--s) var(--l) / 0.5),
+    0 0 0 0.1em hsl(var(--h) var(--s) var(--l) / 0.5),
+    0 0.175em 0.3em hsl(var(--h) var(--s) var(--l) / 0.8) inset,
+    0 -0.025em 0.175em hsl(var(--h) var(--s) var(--l) / 0.4) inset,
+    0 -0.25em 1em 0.3em hsl(var(--h) var(--s) var(--l) / 0.3) inset,
+    0 0.6em 0 hsl(var(--h) var(--s) var(--l) / 0.3) inset, 0 1em 0.5em #0004;
+  backdrop-filter: blur(0.08em);
+}
+
+/* Set height for before pseudo-element of active glass button */
+.glass-btn:active:before {
+  height: 1em;
+}
